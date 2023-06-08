@@ -1,5 +1,9 @@
 //var
 const musica = document.querySelector('audio')
+
+let duracaoMusica = document.querySelector('.fim')
+
+
 //events
 document.querySelector('.botao-play').addEventListener('click', tocarMusica)
 
@@ -39,4 +43,7 @@ function segundosParaMinutos(segundos){
     }
 
     return campoMinutos+':'+campoSegundos;
+}
+function duration(){
+    duracaoMusica.textContent = segundosParaMinutos(Math.floor(currentSong.duration));
 }
