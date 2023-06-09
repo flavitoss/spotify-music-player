@@ -3,6 +3,11 @@ const musica = document.querySelector('audio')
 
 let duracaoMusica = document.querySelector('.fim')
 
+let imagem = document.querySelector('.cover')
+
+let nomeMusica = document.querySelector('.descricao h2')
+
+let nomeArtista = document.querySelector('.descricao i')
 
 //events
 document.querySelector('.botao-play').addEventListener('click', tocarMusica)
