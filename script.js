@@ -1,5 +1,15 @@
 //var
+let musicas = [
+    {titulo: 'fantasia final', artista: 'virgingod', src:'audio/Fantasia Final (feat. Big Rush).mp3', img: 'imagens/neongenesisvgod.png'},
+    
+    {titulo: 'verdade', artista: 'virgingod', src:'audio/verdade (feat. roddie).mp3', img: 'imagens/liderdegim.jpeg'},
+
+    {titulo: 'vintage', artista: 'virgingod', src:'audio/vintage.mp3', img: 'imagens/ldgmais.jpeg'}
+]
+
 const musica = document.querySelector('audio')
+
+let indexMusica = 0;
 
 let duracaoMusica = document.querySelector('.fim')
 
@@ -16,7 +26,31 @@ document.querySelector('.botao-pause').addEventListener('click', pausarMusica)
 
 musica.addEventListener('timeupdate', atualizarBarra)
 
+document.querySelector('.anterior').addEventListener('click', () =>{
+    indexMusica--;
+renderizarMusica(indexMusica)
+})
+
+document.querySelector('.proximo').addEventListener('click', () =>{
+    indexMusica++;
+    renderizarMusica(indexMusica)
+})
+
 //functions
+function renderizarMusica(index){
+    musica.setAttribute('src', musicas[index].src)
+    musica.addEventListener('loadeddata', () => {
+        nomeMusica.textContent = musicas[index].titulo;
+        nomeArtista.textContent = musicas[index].artista
+        imagem.src = musicas[index].img
+        
+        duracaoMusica.textContent = segundosParaMinutos(Math.floor(currentSong.duration));
+        
+        musica.play()
+        
+
+    })
+}
 
 function tocarMusica(){
     musica.play()
@@ -52,3 +86,4 @@ function segundosParaMinutos(segundos){
 function duration(){
     duracaoMusica.textContent = segundosParaMinutos(Math.floor(currentSong.duration));
 }
+
